@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Question15
   m_EditorClassIdentifier: 
   _question: do you wish to be an adventurer before ?
-  _answer: yes, then i took an arrow in the knees
+  _answer: yes, then i took an arrow in the knee
   _heart: 102
   _pupil: 138
   _amplitude: 45
