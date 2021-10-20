@@ -28,6 +28,10 @@ public class LevelManager : MonoBehaviour
     [Range(0, 10)]
     private float _questionTimerLimit = 1f;
 
+    /*[SerializeField]
+    [Tooltip("timer slider")]
+    private ;*/
+
     [Header("")]
     [Header("LEVEL________________________________________________________________________________________________________________")]
 

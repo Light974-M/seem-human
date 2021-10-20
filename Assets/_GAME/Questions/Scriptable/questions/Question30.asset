@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
   m_Name: Question30
   m_EditorClassIdentifier: 
-  _question: could you say "black salt" in spanish"
+  _question: could you say "black salt" in spanish ?
   _answer: i will not, because i want this game to continue
   _heart: 187
   _pupil: 137
