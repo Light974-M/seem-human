@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
-  m_Name: Question8
+  m_Name: Question30
   m_EditorClassIdentifier: 
-  _question: have you ever hit a prostitute android by anger ?
-  _answer: no i have not
-  _heart: 124
-  _pupil: 80
-  _amplitude: 50
-  _longueur: 70
+  _question: could you say "black salt" in spanish"
+  _answer: i will not, because i want this game to continue
+  _heart: 187
+  _pupil: 137
+  _amplitude: 35
+  _longueur: 76

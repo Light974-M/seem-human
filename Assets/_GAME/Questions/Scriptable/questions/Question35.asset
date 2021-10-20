@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
-  m_Name: Question8
+  m_Name: Question35
   m_EditorClassIdentifier: 
-  _question: have you ever hit a prostitute android by anger ?
-  _answer: no i have not
-  _heart: 124
-  _pupil: 80
-  _amplitude: 50
-  _longueur: 70
+  _question: can i see your buisness card ?
+  _answer: i can't believe it....you have a better one...
+  _heart: 145
+  _pupil: 89
+  _amplitude: 25
+  _longueur: 98
