@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: do you like blood ?
   _answer: blood is important for life, so i care about
-  _heart: 121
+  _heart: 120
   _pupil: 85
   _amplitude: 35
   _longueur: 48

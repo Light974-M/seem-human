@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: if you learn you were adopted, how would you live it ?
   _answer: i will live it normally, that not really matter
-  _heart: 84
+  _heart: 80
   _pupil: 80
   _amplitude: 20
   _longueur: 60

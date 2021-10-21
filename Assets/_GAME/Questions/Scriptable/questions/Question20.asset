@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: did you think johnny was the padre of the game ?
   _answer: ooooh marie !
-  _heart: 56
+  _heart: 60
   _pupil: 72
   _amplitude: 60
   _longueur: 54

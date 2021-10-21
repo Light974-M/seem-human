@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: do you like vtuber ?
   _answer: no, i prefer real ones...
-  _heart: 104
+  _heart: 100
   _pupil: 77
   _amplitude: 65
   _longueur: 73

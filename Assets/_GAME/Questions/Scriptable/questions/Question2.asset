@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: do you like pineapple pizza ?
   _answer: it is an abomination
-  _heart: 187
+  _heart: 180
   _pupil: 60
   _amplitude: 90
   _longueur: 70

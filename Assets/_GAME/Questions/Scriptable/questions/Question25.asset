@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: I LOVE YOU !
   _answer: sorry...that is not my case...
-  _heart: 187
+  _heart: 190
   _pupil: 35
   _amplitude: 36
   _longueur: 15
