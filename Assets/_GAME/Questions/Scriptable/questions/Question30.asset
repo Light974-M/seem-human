@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: could you say "black salt" in spanish ?
   _answer: i will not, because i want this game to continue
-  _heart: 187
+  _heart: 190
   _pupil: 137
   _amplitude: 35
   _longueur: 76

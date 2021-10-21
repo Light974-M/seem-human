@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: can you feel my heart ?
   _answer: no, i am human, i cannot hear heart beat
-  _heart: 68
+  _heart: 70
   _pupil: 75
   _amplitude: 50
   _longueur: 78
