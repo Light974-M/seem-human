@@ -4147,6 +4147,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textZone: {fileID: 2026938883}
   levelManager: {fileID: 1162370602}
+  cameraImage: {fileID: 1882084365}
+  spriteList:
+  - {fileID: 21300000, guid: 80de3c1c64f16d8448dd711556af37c7, type: 3}
+  - {fileID: 21300000, guid: f430ab9bc3743f441a65c3cc6a85957a, type: 3}
+  - {fileID: 21300000, guid: e32c3f0c974b17a49b9b4c92267f54d5, type: 3}
+  - {fileID: 21300000, guid: e8879128115f444488b1bfb10e39116b, type: 3}
+  _idleTimerChange: 0.3
 --- !u!1 &1983346279
 GameObject:
   m_ObjectHideFlags: 0
