@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: do you think we were right to abolish slavery ?
   _answer: yes surely
-  _heart: 96
+  _heart: 100
   _pupil: 35
   _amplitude: 74
   _longueur: 15

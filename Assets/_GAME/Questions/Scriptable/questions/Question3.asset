@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: do you think human have to kill for a god ?
   _answer: i think everybody is free to think by their own, but should kill for nothing
-  _heart: 103
+  _heart: 100
   _pupil: 110
   _amplitude: 10
   _longueur: 56

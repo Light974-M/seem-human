@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: are you an impostor ?
   _answer: i am not sus
-  _heart: 134
+  _heart: 130
   _pupil: 35
   _amplitude: 76
   _longueur: 38
