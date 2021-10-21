@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("timer lower point")]
-    [Range(0, 10)]
+    [Range(0, 20)]
     private float _questionTimerLimit = 1f;
 
     /*[SerializeField]
@@ -95,7 +95,7 @@ public class LevelManager : MonoBehaviour
         _timer -= Time.deltaTime;
     }
 
-    private void TestSuspicion()
+    /*private void TestSuspicion()
     {
         if(Mathf.Abs(_currentQuestion.Heart - _hearthrate) < _tolerance)
         {
@@ -113,11 +113,11 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Souffle trop différent, t'es sus");
         }
-    }
+    }*/
 
     private void UpdateGame()
     {
-        TestSuspicion();
+        //TestSuspicion();
         UpdateQuestion();
         UpdateTimer();
         _questionNumber -= 1;

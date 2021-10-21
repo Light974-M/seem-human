@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: now call your friends and i will kill them
   _answer: i refuse
-  _heart: 20
+  _heart: 70
   _pupil: 108
   _amplitude: 48
   _longueur: 95
