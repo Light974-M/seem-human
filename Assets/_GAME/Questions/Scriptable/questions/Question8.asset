@@ -15,6 +15,6 @@ MonoBehaviour:
   _question: have you ever hit a prostitute android by anger ?
   _answer: no i have not
   _heart: 120
-  _pupil: 80
+  _pupil: 0.9
   _amplitude: 50
-  _longueur: 70
+  _longueur: 6

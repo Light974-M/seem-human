@@ -15,6 +15,6 @@ MonoBehaviour:
   _question: do you think we were right to abolish slavery ?
   _answer: yes surely
   _heart: 100
-  _pupil: 35
+  _pupil: 1.5
   _amplitude: 74
   _longueur: 15

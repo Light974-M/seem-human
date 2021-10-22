@@ -15,6 +15,6 @@ MonoBehaviour:
   _question: if i ask you to kill a woman, would you agree ?
   _answer: surely not
   _heart: 110
-  _pupil: 135
+  _pupil: 0.5
   _amplitude: 30
-  _longueur: 60
+  _longueur: 10

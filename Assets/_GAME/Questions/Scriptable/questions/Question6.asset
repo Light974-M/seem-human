@@ -15,6 +15,6 @@ MonoBehaviour:
   _question: if you learn you were adopted, how would you live it ?
   _answer: i will live it normally, that not really matter
   _heart: 80
-  _pupil: 80
+  _pupil: 1.5
   _amplitude: 20
-  _longueur: 60
+  _longueur: 12
