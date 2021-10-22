@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
     private int _questionNumber = 30;
 
     [SerializeField]
-    [Tooltip("Niveau de tolérence entre les valeurs actuelles et celles demandées")]
+    [Tooltip("Niveau de tolï¿½rence entre les valeurs actuelles et celles demandï¿½es")]
     private int _tolerance = 0;
 
     [Header("")]
@@ -101,12 +101,12 @@ public class LevelManager : MonoBehaviour
 
         // On initialise le timer
         UpdateTimer();
-        // On lance l'event pour afficher la question à l'écran
+        // On lance l'event pour afficher la question ï¿½ l'ï¿½cran
         questionChange(_currentQuestion);
 
         _timerSlider.SetMaxTime(_questionTimer);
 
-        // On lance le timer après 3s
+        // On lance le timer aprï¿½s 3s
         Invoke(nameof(LunchNewQuestion), 3f);
     }
 
@@ -135,15 +135,15 @@ public class LevelManager : MonoBehaviour
             // On reset le timer
             UpdateTimer();
 
-            // Lance la vérification des paramètres
+            // Lance la vï¿½rification des paramï¿½tres
             TestSuspicion();
-            // Dit d'afficher la réponse en texte
+            // Dit d'afficher la rï¿½ponse en texte
             if (answer != null)
             {
                 answer(_currentQuestion);
             }
 
-            // Dans 3s on passe à la question suivante
+            // Dans 3s on passe ï¿½ la question suivante
             Invoke(nameof(ChargementNewQuestion), 3f);
         }
     }
@@ -171,7 +171,7 @@ public class LevelManager : MonoBehaviour
 
     private void ChargementNewQuestion()
     {
-        // Après le temps de latence pour la réponse, on teste si win
+        // Aprï¿½s le temps de latence pour la rï¿½ponse, on teste si win
         _questionNumber -= 1;
         if (_questionNumber == 0)
         {
@@ -182,7 +182,7 @@ public class LevelManager : MonoBehaviour
         // On affiche la question
         questionChange(_currentQuestion);
 
-        // Puis on affiche après 3s les données et on lance le timer
+        // Puis on affiche aprï¿½s 3s les donnï¿½es et on lance le timer
         Invoke(nameof(LunchNewQuestion), 3f);
     }
 
@@ -202,7 +202,7 @@ public class LevelManager : MonoBehaviour
         // On lance le timer
         _timerIsDecrease = true;
 
-        // On  affiche les données
+        // On  affiche les donnï¿½es
         if (newQuestionBegin != null)
         {
             newQuestionBegin(_currentQuestion);

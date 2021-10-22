@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class ValuesQuestionController : MonoBehaviour
 {
+    [Header("")]
+    [Header("QUESTION VALUES WRITE____________________________________________________________________________________________________________")]
+
     [SerializeField]
     [Tooltip("place where question will be displayed")]
     private Text textZone;
