@@ -8,14 +8,7 @@ public class HeartBeatSetDetector : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if(Input.GetKey(KeyCode.Mouse1))
-        {
-            _isChangingHeartBeat = true;
-        }
-        else
-        {
-            _isChangingHeartBeat = false;
-        }
+        _isChangingHeartBeat = true;
     }
 
     private void OnMouseExit()

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class QuestionUiController : MonoBehaviour
 {
+    [Header("")]
+    [Header("QUESTION WRITE____________________________________________________________________________________________________________")]
+
     [SerializeField]
     [Tooltip("place where question will be displayed")]
     private Text textZone;
@@ -13,16 +16,21 @@ public class QuestionUiController : MonoBehaviour
     [Tooltip("LevelManager(waou)")]
     private LevelManager levelManager;
 
+    [Header("")]
+    [Header("BLADE RUNNER IMG____________________________________________________________________________________________________________")]
+
     [SerializeField]
-    [Tooltip("Image ou mettre le sprite du Blade Runner")]
+    [Tooltip("place where the blade runner sprite will be displayed")]
     private Image cameraImage;
 
     [SerializeField]
-    [Tooltip("Liste des sprites du Blade Runner")]
+    [Tooltip("blade runner sprite list")]
     private List<Sprite> spriteList;
 
     [SerializeField]
+    [Tooltip("sprite changing rate")]
     private float _idleTimerChange;
+
     private float _idleTimer = 0f;
     private int _indexSprite = 0;
 
