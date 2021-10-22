@@ -17,7 +17,7 @@ public class QuestionAsset : ScriptableObject
 
     [SerializeField]
     [Tooltip("pupil dilation asked")]
-    private int _pupil = 0;              public int Pupil => _pupil;
+    private float _pupil = 0;              public float Pupil => _pupil;
 
     [SerializeField]
     [Tooltip("inspiration point")]

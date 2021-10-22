@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class HeartDraw : MonoBehaviour
 {
+    [Header("")]
+    [Header("DRAW____________________________________________________________________________________________________________")]
+
     [SerializeField]
     [Tooltip("component that will be used for drawing")]
     private LineRenderer lineRender;
@@ -23,15 +26,32 @@ public class HeartDraw : MonoBehaviour
     private float currentHeartBeat = 60;
     private float beatcounter = 0;
 
-    void Update()
+    private void Update()
+    {
+        if (heartBeatSetDetector.IsChangingHeartBeat)
+        {
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                heartBeat = true;
+                currentHeartBeat = (currentHeartBeat + (60 / beatcounter)) / 2;
+                currentHeartBeat = currentHeartBeat / 10;
+                currentHeartBeat = Mathf.Round(currentHeartBeat);
+                currentHeartBeat = currentHeartBeat * 10;
+                beatcounter = 0;
+            }
+        }
+    }
+
+    void FixedUpdate()
     {
         _bpmUi.text = $"{currentHeartBeat} BPM";
 
-        transform.position += Vector3.right * (20 * Time.deltaTime);
+        transform.position += Vector3.right * (30 * Time.deltaTime);
         lineRender.positionCount++;
         lineRender.SetPosition(lineRender.positionCount - 1, transform.position);
 
-        if(transform.localPosition.x > 120)
+        if(transform.localPosition.x > 450)
         {
             lineRender.positionCount = 0;
             transform.localPosition = new Vector3(0,transform.localPosition.y,0);
@@ -43,44 +63,33 @@ public class HeartDraw : MonoBehaviour
         
         if (beatcounter >= 60 / currentHeartBeat)
         {
-            if(!heartBeatSetDetector.IsChangingHeartBeat)
+            if (!heartBeatSetDetector.IsChangingHeartBeat)
             {
                 heartBeat = true;
                 beatcounter = 0;
             }
         }
 
-        if(heartBeatSetDetector.IsChangingHeartBeat)
-        {
-            if(Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                heartBeat = true;
-                currentHeartBeat = (currentHeartBeat + (60 / beatcounter)) / 2;
-                currentHeartBeat = currentHeartBeat / 10;
-                currentHeartBeat = Mathf.Round(currentHeartBeat);
-                currentHeartBeat = currentHeartBeat * 10;
-                beatcounter = 0;
-            }
-        }
+        
 
         beatcounter += Time.deltaTime;
     }
 
     private void DrawHeartBeat()
     {
-        if (counter <= 10)
+        if (counter <= 1)
         {
-            transform.position += Vector3.up * 1f;
+            transform.position += Vector3.up * 6f;
             counter++;
         }
-        else if (counter <= 21)
+        else if (counter <= 3)
         {
-            transform.position -= Vector3.up * 2f;
+            transform.position -= Vector3.up * 12f;
             counter++;
         }
-        else if (counter <= 32)
+        else if (counter <= 5)
         {
-            transform.position += Vector3.up * 1f;
+            transform.position += Vector3.up * 6f;
             counter++;
         }
         else

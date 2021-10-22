@@ -47,9 +47,9 @@ public class LevelManager : MonoBehaviour
     [Range(0, 20)]
     private float _questionTimerLimit = 1f;
 
-    /*[SerializeField]
-    [Tooltip("timer slider")]
-    private ;*/
+    //[SerializeField]
+    //[Tooltip("timer slider")]
+    //private ;
 
     [Header("")]
     [Header("LEVEL________________________________________________________________________________________________________________")]
@@ -89,7 +89,6 @@ public class LevelManager : MonoBehaviour
         if(_timer <= 0)
         {
             UpdateGame();
-            Debug.Log("Trop tard, t'es sus");
         }
 
         _timer -= Time.deltaTime;
