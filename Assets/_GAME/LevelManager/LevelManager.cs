@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -47,9 +48,13 @@ public class LevelManager : MonoBehaviour
     [Range(0, 20)]
     private float _questionTimerLimit = 1f;
 
-    /*[SerializeField]
+    [SerializeField]
     [Tooltip("timer slider")]
-    private ;*/
+    private TimeSliderController _timerSlider;
+
+    [SerializeField]
+    [Tooltip("if timer decrease")]
+    private bool _timerIsDecrease = false;
 
     [Header("")]
     [Header("LEVEL________________________________________________________________________________________________________________")]
@@ -61,20 +66,28 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Niveau de tolérence entre les valeurs actuelles et celles demandées")]
-    private int _tolerance = 10;
+    private int _tolerance = 0;
 
     [Header("")]
     [Header("QUESTIONS________________________________________________________________________________________________________________")]
 
     [SerializeField]
     [Tooltip("timer lower point")]
-    private List<QuestionAsset> _questionList;
+    private List<QuestionAsset> _questionList;  public List<QuestionAsset> QuestionList => _questionList;
 
     private QuestionAsset _currentQuestion;
+
+    [SerializeField]
+    [Tooltip("Nombre d'erreur max")]
+    private int _errorMax = 10;
+    [SerializeField]
+    private int _error = 0;
 
     //EVENTS_____________________________________________________________________________________________________________________________
     public delegate void QuestionAssetDelegate(QuestionAsset asset);
     public event QuestionAssetDelegate questionChange;
+    public event QuestionAssetDelegate newQuestionBegin;
+    public event QuestionAssetDelegate answer;
 
     private void Start()
     {
@@ -82,50 +95,95 @@ public class LevelManager : MonoBehaviour
         _pupilDilatation = 1;
         _amplitude = 5;
         _longueur = 5;
+
+        // On charge la nouvelle question
+        UpdateQuestion();
+
+        // On initialise le timer
+        UpdateTimer();
+        // On lance l'event pour afficher la question à l'écran
+        questionChange(_currentQuestion);
+
+        _timerSlider.SetMaxTime(_questionTimer);
+
+        // On lance le timer après 3s
+        Invoke(nameof(LunchNewQuestion), 3f);
     }
 
     void Update()
     {
         if(_timer <= 0)
         {
-            UpdateGame();
-            Debug.Log("Trop tard, t'es sus");
+            SetSuspition(3);
+            Respond();
         }
 
-        _timer -= Time.deltaTime;
+        if(_timerIsDecrease)
+        {
+            _timer -= Time.deltaTime;
+            _timerSlider.SetTime(_timer);
+        }
     }
 
-    /*private void TestSuspicion()
+    public void Respond()
     {
-        if(Mathf.Abs(_currentQuestion.Heart - _hearthrate) < _tolerance)
+        if(_timerIsDecrease)
         {
-            Debug.Log("BPM trop différent, t'es sus");
-        }
-        if (Mathf.Abs(_currentQuestion.Pupil - _pupilDilatation) < _tolerance)
-        {
-            Debug.Log("Pupille trop différente, t'es sus");
-        }
-        if (Mathf.Abs(_currentQuestion.Amplitude - _amplitude) < _tolerance)
-        {
-            Debug.Log("Souffle trop différent, t'es sus");
-        }
-        if (Mathf.Abs(_currentQuestion.Longueur - _longueur) < _tolerance)
-        {
-            Debug.Log("Souffle trop différent, t'es sus");
-        }
-    }*/
+            // On stoppe le timer
+            _timerIsDecrease = false;
 
-    private void UpdateGame()
+            // On reset le timer
+            UpdateTimer();
+
+            // Lance la vérification des paramètres
+            TestSuspicion();
+            // Dit d'afficher la réponse en texte
+            if (answer != null)
+            {
+                answer(_currentQuestion);
+            }
+
+            // Dans 3s on passe à la question suivante
+            Invoke(nameof(ChargementNewQuestion), 3f);
+        }
+    }
+
+    private void TestSuspicion()
     {
-        //TestSuspicion();
-        UpdateQuestion();
-        UpdateTimer();
+        Debug.Log("Suspition");
+        if (Mathf.Abs(_currentQuestion.Heart - _hearthrate) > _tolerance)
+        {
+            SetSuspition(1);
+        }
+        if (Mathf.Abs(_currentQuestion.Pupil - _pupilDilatation) > _tolerance)
+        {
+            SetSuspition(1);
+        }
+        if (Mathf.Abs(_currentQuestion.Amplitude - _amplitude) > _tolerance)
+        {
+            SetSuspition(1);
+        }
+        else if (Mathf.Abs(_currentQuestion.Longueur - _longueur) > _tolerance)
+        {
+            SetSuspition(1);
+        }
+    }
+
+    private void ChargementNewQuestion()
+    {
+        // Après le temps de latence pour la réponse, on teste si win
         _questionNumber -= 1;
-
         if (_questionNumber == 0)
         {
             SceneManager.LoadScene("WinScreen");
         }
+        // Sinon on charge une nouvelle question
+        UpdateQuestion();
+        // On affiche la question
+        questionChange(_currentQuestion);
+
+        // Puis on affiche après 3s les données et on lance le timer
+        Invoke(nameof(LunchNewQuestion), 3f);
     }
 
     private void UpdateQuestion()
@@ -137,10 +195,17 @@ public class LevelManager : MonoBehaviour
         {
             _questionList.RemoveAt(_tmp);
         }
-        
-        if(questionChange != null)
+    }
+
+    private void LunchNewQuestion()
+    { 
+        // On lance le timer
+        _timerIsDecrease = true;
+
+        // On  affiche les données
+        if (newQuestionBegin != null)
         {
-            questionChange(_currentQuestion);
+            newQuestionBegin(_currentQuestion);
         }
     }
 
@@ -157,5 +222,16 @@ public class LevelManager : MonoBehaviour
         }
 
         _timer = _questionTimer;
+        _timerSlider.SetTime(_timer);
+    }
+
+    private void SetSuspition(int value)
+    {
+        _error += value;
+        if(_error >= _errorMax)
+        {
+            //SceneManager.LoadScene("LoseScreen");
+            Debug.Log("Loose");
+        }
     }
 }

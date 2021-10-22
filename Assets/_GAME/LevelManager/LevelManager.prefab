@@ -45,13 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hearthrate: 0
   _pupilDilatation: 0
-  _breathValue1: 0
-  _breathValue2: 0
+  _amplitude: 0
+  _longueur: 0
   _questionTimer: 20
   _timer: 0
   _questionTimerDecreaseSpeed: 1
   _questionTimerLimit: 1
   _questionNumber: 30
+  _tolerance: 10
   _questionList:
   - {fileID: 11400000, guid: 39aa9836e1dc5b44cac980213e196af9, type: 2}
   - {fileID: 11400000, guid: 0c51ab4b7a15b8f4aa0a5739b9750c93, type: 2}
@@ -88,3 +89,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f78b097f1fe1cc41b0b95cb52f05efc, type: 2}
   - {fileID: 11400000, guid: a200deafca85ced449f63c5e37befddc, type: 2}
   - {fileID: 11400000, guid: be3b0cc08b9b0214db11a639810d8c0d, type: 2}
+  _errorMax: 10
+  _error: 0
