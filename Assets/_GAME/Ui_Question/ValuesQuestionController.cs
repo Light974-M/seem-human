@@ -15,16 +15,23 @@ public class ValuesQuestionController : MonoBehaviour
 
     private void OnEnable()
     {
-        levelManager.questionChange += SetValues;
+        levelManager.newQuestionBegin += SetValues;
+        levelManager.answer += SetValues2;
     }
 
     private void OnDisable()
     {
-        levelManager.questionChange -= SetValues;
+        levelManager.newQuestionBegin -= SetValues;
+        levelManager.answer -= SetValues2;
     }
 
     private void SetValues(QuestionAsset questionAsset)
     {
         textZone.text = $"HUMAN INFORMATIONS :\n\n\n\n -Heart rate : {questionAsset.Heart} \n\n -Pupil : {questionAsset.Pupil} \n\n -Amplitude : {questionAsset.Amplitude} \n\n -Length : {questionAsset.Longueur}";
+    }
+
+    private void SetValues2(QuestionAsset questionAsset)
+    {
+        textZone.text = $"{questionAsset.Answer}";
     }
 }
