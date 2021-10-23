@@ -51,6 +51,8 @@ MonoBehaviour:
   _timer: 0
   _questionTimerDecreaseSpeed: 1
   _questionTimerLimit: 1
+  _timerSlider: {fileID: 0}
+  _timerIsDecrease: 0
   _questionNumber: 30
   _tolerance: 10
   _questionList:
@@ -91,3 +93,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be3b0cc08b9b0214db11a639810d8c0d, type: 2}
   _errorMax: 10
   _error: 0
+  _suspicionSlider: {fileID: 0}

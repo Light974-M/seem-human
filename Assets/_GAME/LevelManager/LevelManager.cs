@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("timer slider")]
-    private TimeSliderController _timerSlider;
+    private SliderController _timerSlider;
 
     [SerializeField]
     [Tooltip("if timer decrease")]
@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
     private int _questionNumber = 30;
 
     [SerializeField]
-    [Tooltip("Niveau de tol�rence entre les valeurs actuelles et celles demand�es")]
+    [Tooltip("Niveau de tolerence entre les valeurs actuelles et celles demandees")]
     private int _tolerance = 0;
 
     [Header("")]
@@ -80,8 +80,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Nombre d'erreur max")]
     private int _errorMax = 10;
+
     [SerializeField]
     private int _error = 0;
+
+    [SerializeField]
+    [Tooltip("Suspicion Slider script")]
+    private SliderController _suspicionSlider;
 
     //EVENTS_____________________________________________________________________________________________________________________________
     public delegate void QuestionAssetDelegate(QuestionAsset asset);
@@ -96,15 +101,19 @@ public class LevelManager : MonoBehaviour
         _amplitude = 5;
         _longueur = 5;
 
+        // On set le slider de suspicion
+        _suspicionSlider.SetMaxValue(_errorMax);
+        _suspicionSlider.SetValue(_error);
+
         // On charge la nouvelle question
         UpdateQuestion();
 
         // On initialise le timer
         UpdateTimer();
-        // On lance l'event pour afficher la question � l'�cran
+        // On lance l'event pour afficher la question a l'ecran
         questionChange(_currentQuestion);
 
-        _timerSlider.SetMaxTime(_questionTimer);
+        _timerSlider.SetMaxValue(_questionTimer);
 
         // On lance le timer apr�s 3s
         Invoke(nameof(LunchNewQuestion), 3f);
@@ -121,7 +130,7 @@ public class LevelManager : MonoBehaviour
         if(_timerIsDecrease)
         {
             _timer -= Time.deltaTime;
-            _timerSlider.SetTime(_timer);
+            _timerSlider.SetValue(_timer);
         }
     }
 
@@ -171,7 +180,7 @@ public class LevelManager : MonoBehaviour
 
     private void ChargementNewQuestion()
     {
-        // Apr�s le temps de latence pour la r�ponse, on teste si win
+        // Apres le temps de latence pour la r�ponse, on teste si win
         _questionNumber -= 1;
         if (_questionNumber == 0)
         {
@@ -222,13 +231,14 @@ public class LevelManager : MonoBehaviour
         }
 
         _timer = _questionTimer;
-        _timerSlider.SetTime(_timer);
+        _timerSlider.SetValue(_timer);
     }
 
     private void SetSuspition(int value)
     {
         _error += value;
-        if(_error >= _errorMax)
+        _suspicionSlider.SetValue(_error);
+        if (_error >= _errorMax)
         {
             //SceneManager.LoadScene("LoseScreen");
             Debug.Log("Loose");
