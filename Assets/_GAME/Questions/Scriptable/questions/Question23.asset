@@ -15,6 +15,6 @@ MonoBehaviour:
   _question: can you feel my heart ?
   _answer: no, i am human, i cannot hear heart beat
   _heart: 70
-  _pupil: 75
+  _pupil: 3.9
   _amplitude: 50
   _longueur: 78

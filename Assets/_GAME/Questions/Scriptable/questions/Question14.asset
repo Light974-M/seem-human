@@ -15,6 +15,6 @@ MonoBehaviour:
   _question: and your next line will be "no ! it is not my next line !"
   _answer: no ! it is not my next line ! .... what ?
   _heart: 90
-  _pupil: 44
+  _pupil: 8.4
   _amplitude: 55
-  _longueur: 64
+  _longueur: 7

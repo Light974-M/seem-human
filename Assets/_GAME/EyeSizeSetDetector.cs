@@ -18,12 +18,12 @@ public class EyeSizeSetDetector : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             if (eyePupil.localScale.x <= 1.15f)
-                eyePupil.localScale += new Vector3(0.02f, 0.02f, 0);
+                eyePupil.localScale += new Vector3(0.01f, 0.01f, 0);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            if(eyePupil.localScale.x >= 0.1f)
-                eyePupil.localScale -= new Vector3(0.02f, 0.02f, 0);
+            if(eyePupil.localScale.x >= 0.02f)
+                eyePupil.localScale -= new Vector3(0.01f, 0.01f, 0);
         }
 
         float Vd = Mathf.Round(eyePupil.localScale.x * 100) / 10;

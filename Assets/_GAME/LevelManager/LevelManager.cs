@@ -73,9 +73,9 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("timer lower point")]
-    private List<QuestionAsset> _questionList;  public List<QuestionAsset> QuestionList => _questionList;
+    private List<QuestionAsset> _questionList;
 
-    private QuestionAsset _currentQuestion;
+    private QuestionAsset _currentQuestion;    public QuestionAsset CurrentQuestion => _currentQuestion;
 
     [SerializeField]
     [Tooltip("Nombre d'erreur max")]

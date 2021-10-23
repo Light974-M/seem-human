@@ -14,7 +14,18 @@ public class BreathSetDetector : MonoBehaviour
 
     private float memoX = 0;
     private float memoY = 0;
-    
+
+    private LevelManager levelManager;
+
+    private void Awake()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
+    private void Update()
+    {
+        breathAskedMesh.localScale = new Vector3((levelManager.CurrentQuestion.Longueur / 19f) + 0.25f, (levelManager.CurrentQuestion.Amplitude / 50f) + 0.25f, breathAskedMesh.localScale.z);
+    }
+
     private void OnMouseDrag()
     {
         Vector3 mousePos = Input.mousePosition;
