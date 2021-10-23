@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeSliderController : MonoBehaviour
+public class SliderController : MonoBehaviour
 {
     [SerializeField]
     private Slider slider;
@@ -14,17 +14,17 @@ public class TimeSliderController : MonoBehaviour
     [SerializeField]
     private Image fill;
 
-    public void SetMaxTime(float time)
+    public void SetMaxValue(float value)
     {
-        slider.maxValue = time;
-        slider.value = time;
+        slider.maxValue = value;
+        slider.value = value;
 
         fill.color = gradient.Evaluate(1f);
     }
 
-    public void SetTime(float time)
+    public void SetValue(float value)
     {
-        slider.value = time;
+        slider.value = value;
 
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
