@@ -23,14 +23,24 @@ public class HeartDraw : MonoBehaviour
     private bool heartBeat = false;
     private int counter = 0;
 
+
+    [SerializeField]
     private float currentHeartBeat = 60;
+    public float CurrentHeartBeat
+    {
+        get { return currentHeartBeat; }
+        set { currentHeartBeat = value; }
+    }
+
     private float beatcounter = 0;
+
+    [SerializeField]
+    private LevelManager levelmanager;
 
     private void Update()
     {
         if (heartBeatSetDetector.IsChangingHeartBeat)
         {
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 heartBeat = true;
@@ -38,6 +48,8 @@ public class HeartDraw : MonoBehaviour
                 currentHeartBeat = currentHeartBeat / 10;
                 currentHeartBeat = Mathf.Round(currentHeartBeat);
                 currentHeartBeat = currentHeartBeat * 10;
+                // On envoie la valeur au levelManager
+                levelmanager.HearthRate = currentHeartBeat;
                 beatcounter = 0;
             }
         }

@@ -3062,6 +3062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyePupil: {fileID: 920446912}
   diameter: {fileID: 36493138}
+  levelmanager: {fileID: 1162370602}
 --- !u!1 &1478295741
 GameObject:
   m_ObjectHideFlags: 0
@@ -4260,6 +4261,8 @@ MonoBehaviour:
   lineRender: {fileID: 1847913756}
   heartBeatSetDetector: {fileID: 752318341}
   _bpmUi: {fileID: 357633476}
+  currentHeartBeat: 60
+  levelmanager: {fileID: 1162370602}
 --- !u!1 &1879654124
 GameObject:
   m_ObjectHideFlags: 0
@@ -4984,17 +4987,33 @@ PrefabInstance:
       value: LevelManager
       objectReference: {fileID: 0}
     - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
+      propertyPath: heartDraw
+      value: 
+      objectReference: {fileID: 1847913758}
+    - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
+      propertyPath: _tolerance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
+      propertyPath: breathMesh
+      value: 
+      objectReference: {fileID: 660489018}
+    - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
       propertyPath: _timerSlider
       value: 
       objectReference: {fileID: 71281803}
     - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
       propertyPath: _questionTimer
-      value: 12.6
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
       propertyPath: _questionNumber
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
+      propertyPath: breathAskedMesh
+      value: 
+      objectReference: {fileID: 898095298}
     - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
       propertyPath: _suspicionSlider
       value: 
@@ -5113,7 +5132,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8ee4eaa58db6156428cd63026292528f, type: 2}
     - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
       propertyPath: _questionTimerDecreaseSpeed
-      value: 0.913
+      value: 0.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d937e96b749c14296e804a52c17958, type: 3}
