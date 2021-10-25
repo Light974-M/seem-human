@@ -12,19 +12,31 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Actual hearthrate value")]
-    private int _hearthrate; public int Hearthrate => _hearthrate;
+    private float _hearthrate;
+    public float HearthRate
+    { get { return _hearthrate; }   set { _hearthrate = value; } }
 
     [SerializeField]
     [Tooltip("Actual pupil dilatation")]
-    private float _pupilDilatation; public float PupilDilatation => _pupilDilatation;
+    private float _pupilDilatation;
+    public float PupilDilatation
+    { get { return _pupilDilatation; } set { _pupilDilatation = value; } }
 
-    [SerializeField]
+    /*[SerializeField]
     [Tooltip("Actual breath value 1")]
     private float _amplitude; public float BreathValue1 => _amplitude;
 
     [SerializeField]
     [Tooltip("Actual breath value 2")]
-    private float _longueur; public float BreathValue2 => _longueur;
+    private float _longueur; public float BreathValue2 => _longueur;*/
+
+    [SerializeField]
+    [Tooltip("GameObject du dessin du souffle en cours")]
+    private Transform breathMesh;
+
+    [SerializeField]
+    [Tooltip("GameObject du dessin du souffle demande")]
+    private Transform breathAskedMesh;
 
     [Header("")]
     [Header("TIME________________________________________________________________________________________________________________")]
@@ -66,7 +78,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Niveau de tolerence entre les valeurs actuelles et celles demandees")]
-    private int _tolerance = 0;
+    private float _tolerance = 1;
 
     [Header("")]
     [Header("QUESTIONS________________________________________________________________________________________________________________")]
@@ -96,10 +108,10 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        _hearthrate = 80;
+        _hearthrate = 60;
         _pupilDilatation = 1;
-        _amplitude = 5;
-        _longueur = 5;
+        //_amplitude = 5;
+        //_longueur = 5;
 
         // On set le slider de suspicion
         _suspicionSlider.SetMaxValue(_errorMax);
@@ -144,37 +156,44 @@ public class LevelManager : MonoBehaviour
             // On reset le timer
             UpdateTimer();
 
-            // Lance la v�rification des param�tres
+            // Lance la verification des param�tres
             TestSuspicion();
-            // Dit d'afficher la r�ponse en texte
+            // Dit d'afficher la reponse en texte
             if (answer != null)
             {
                 answer(_currentQuestion);
             }
 
-            // Dans 3s on passe � la question suivante
+            // Dans 3s on passe a la question suivante
             Invoke(nameof(ChargementNewQuestion), 3f);
         }
     }
 
     private void TestSuspicion()
     {
-        Debug.Log("Suspition");
-        if (Mathf.Abs(_currentQuestion.Heart - _hearthrate) > _tolerance)
+        if (_currentQuestion.Heart != _hearthrate)
         {
             SetSuspition(1);
+            Debug.Log("Coeur sus");
         }
-        if (Mathf.Abs(_currentQuestion.Pupil - _pupilDilatation) > _tolerance)
+        if (_currentQuestion.Pupil != _pupilDilatation)
         {
             SetSuspition(1);
+            Debug.Log("Pupille sus");
         }
-        if (Mathf.Abs(_currentQuestion.Amplitude - _amplitude) > _tolerance)
+        if(Mathf.Abs(breathMesh.localScale.x - breathAskedMesh.localScale.x) > _tolerance)
         {
             SetSuspition(1);
+            Debug.Log("Souffle sus");
         }
-        else if (Mathf.Abs(_currentQuestion.Longueur - _longueur) > _tolerance)
+        else if (Mathf.Abs(breathMesh.localScale.y - breathAskedMesh.localScale.y) > _tolerance)
         {
             SetSuspition(1);
+            Debug.Log("Souffle sus");
+        }
+        else
+        {
+            Debug.Log("Souffle ok");
         }
     }
 
@@ -211,11 +230,12 @@ public class LevelManager : MonoBehaviour
         // On lance le timer
         _timerIsDecrease = true;
 
-        // On  affiche les donn�es
+        // On  affiche les donnees
         if (newQuestionBegin != null)
         {
             newQuestionBegin(_currentQuestion);
         }
+
     }
 
     private void UpdateTimer()
@@ -240,7 +260,7 @@ public class LevelManager : MonoBehaviour
         _suspicionSlider.SetValue(_error);
         if (_error >= _errorMax)
         {
-            //SceneManager.LoadScene("LoseScreen");
+            SceneManager.LoadScene("LoseScreen");
             Debug.Log("Loose");
         }
     }

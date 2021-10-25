@@ -13,6 +13,10 @@ public class EyeSizeSetDetector : MonoBehaviour
     [Tooltip("text that will render diameter")]
     private Text diameter;
 
+    [SerializeField]
+    [Tooltip("LevelManager for return pupil value")]
+    private LevelManager levelmanager;
+
     private void OnMouseOver()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
@@ -28,5 +32,6 @@ public class EyeSizeSetDetector : MonoBehaviour
 
         float Vd = Mathf.Round(eyePupil.localScale.x * 100) / 10;
         diameter.text = $"{Vd} Vd";
+        levelmanager.PupilDilatation = Vd;
     }
 }
