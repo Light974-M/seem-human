@@ -4,18 +4,15 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-// Penser à chaque fois que la préfab est utilisée réassigner l'audioManager de la scène en question
-// et créer/assigner la fonction pour quitter les paramètres au bouton concerné
-
 public class SettingsManager : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Gameobject contenant la fenètre du menu principal")]
     private GameObject mainWindow;
 
-    public Dropdown resolutionsDropdown;
+    [SerializeField]
+    private AudioMixer audioMixer;
 
-    public AudioMixer audioMixer;
     [Header("Slider son :")]
     public Slider generalSoundSlider;
     public Slider musicSlider;
@@ -35,21 +32,26 @@ public class SettingsManager : MonoBehaviour
         Screen.fullScreen = true;
     }
 
+    // Fonction destinée à un dropdown
     public void SetResolution(int resolutionIndex)
     {
         switch (resolutionIndex)
         {
             case 0:
                 Screen.SetResolution(1920, 1080, Screen.fullScreen);
+                Debug.Log("1920 x 1080");
                 break;
             case 1:
                 Screen.SetResolution(1680, 1050, Screen.fullScreen);
+                Debug.Log("1680 x 1050");
                 break;
             case 2:
                 Screen.SetResolution(1280, 720, Screen.fullScreen);
+                Debug.Log("1280 x 720");
                 break;
             case 3:
                 Screen.SetResolution(720, 480, Screen.fullScreen);
+                Debug.Log("720 x 480");
                 break;
             default:
                 break;
