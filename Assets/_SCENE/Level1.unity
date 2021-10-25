@@ -303,7 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07d58b858547db4ebef3b9c4b4504e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 71281802}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -503,7 +502,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textZone: {fileID: 1290982752}
-  levelManager: {fileID: 1162370602}
 --- !u!1 &280431938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,7 +3060,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyePupil: {fileID: 920446912}
   diameter: {fileID: 36493138}
-  levelmanager: {fileID: 1162370602}
 --- !u!1 &1478295741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,7 +3237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07d58b858547db4ebef3b9c4b4504e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1508090179}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.890306, b: 0, a: 1}

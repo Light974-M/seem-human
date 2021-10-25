@@ -12,8 +12,6 @@ public class QuestionUiController : MonoBehaviour
     [Tooltip("place where question will be displayed")]
     private Text textZone;
 
-    [SerializeField]
-    [Tooltip("LevelManager(waou)")]
     private LevelManager levelManager;
 
     [Header("")]
@@ -36,6 +34,7 @@ public class QuestionUiController : MonoBehaviour
 
     private void Awake()
     {
+        levelManager = FindObjectOfType<LevelManager>();
         cameraImage.sprite = spriteList[0];
     }
 

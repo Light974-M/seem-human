@@ -22,14 +22,6 @@ public class LevelManager : MonoBehaviour
     public float PupilDilatation
     { get { return _pupilDilatation; } set { _pupilDilatation = value; } }
 
-    /*[SerializeField]
-    [Tooltip("Actual breath value 1")]
-    private float _amplitude; public float BreathValue1 => _amplitude;
-
-    [SerializeField]
-    [Tooltip("Actual breath value 2")]
-    private float _longueur; public float BreathValue2 => _longueur;*/
-
     [SerializeField]
     [Tooltip("GameObject du dessin du souffle en cours")]
     private Transform breathMesh;
@@ -86,7 +78,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     [Tooltip("timer lower point")]
     private List<QuestionAsset> _questionList;
-
     private QuestionAsset _currentQuestion;    public QuestionAsset CurrentQuestion => _currentQuestion;
 
     [SerializeField]
@@ -110,8 +101,6 @@ public class LevelManager : MonoBehaviour
     {
         _hearthrate = 60;
         _pupilDilatation = 1;
-        //_amplitude = 5;
-        //_longueur = 5;
 
         // On set le slider de suspicion
         _suspicionSlider.SetMaxValue(_errorMax);
@@ -174,32 +163,24 @@ public class LevelManager : MonoBehaviour
         if (_currentQuestion.Heart != _hearthrate)
         {
             SetSuspition(1);
-            Debug.Log("Coeur sus");
         }
         if (_currentQuestion.Pupil != _pupilDilatation)
         {
             SetSuspition(1);
-            Debug.Log("Pupille sus");
         }
         if(Mathf.Abs(breathMesh.localScale.x - breathAskedMesh.localScale.x) > _tolerance)
         {
             SetSuspition(1);
-            Debug.Log("Souffle sus");
         }
         else if (Mathf.Abs(breathMesh.localScale.y - breathAskedMesh.localScale.y) > _tolerance)
         {
             SetSuspition(1);
-            Debug.Log("Souffle sus");
-        }
-        else
-        {
-            Debug.Log("Souffle ok");
         }
     }
 
     private void ChargementNewQuestion()
     {
-        // Apres le temps de latence pour la r�ponse, on teste si win
+        // Apres le temps de latence pour la reponse, on teste si win
         _questionNumber -= 1;
         if (_questionNumber == 0)
         {
@@ -210,7 +191,7 @@ public class LevelManager : MonoBehaviour
         // On affiche la question
         questionChange(_currentQuestion);
 
-        // Puis on affiche apr�s 3s les donn�es et on lance le timer
+        // Puis on affiche apres 3s les donnees et on lance le timer
         Invoke(nameof(LunchNewQuestion), 3f);
     }
 

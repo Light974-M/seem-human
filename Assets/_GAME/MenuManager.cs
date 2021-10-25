@@ -11,11 +11,14 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Nom de la scène à charger quand on appuie sur play")]
-    private string levelToLoad;
+    private string levelToLoad = "Level1";
 
     private void Awake()
     {
-        settingsWindow.SetActive(false);
+        if(settingsWindow != null)
+        {
+            settingsWindow.SetActive(false);
+        }
     }
 
     public void ButtonPlay()

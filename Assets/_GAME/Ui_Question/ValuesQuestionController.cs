@@ -12,9 +12,12 @@ public class ValuesQuestionController : MonoBehaviour
     [Tooltip("place where question will be displayed")]
     private Text textZone;
 
-    [SerializeField]
-    [Tooltip("LevelManager(waou)")]
     private LevelManager levelManager;
+
+    private void Awake()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
 
     private void OnEnable()
     {
@@ -30,7 +33,7 @@ public class ValuesQuestionController : MonoBehaviour
 
     private void SetValues(QuestionAsset questionAsset)
     {
-        textZone.text = $"HUMAN INFORMATIONS :\n\n\n\n -Heart rate : {questionAsset.Heart} \n\n -Pupil : {questionAsset.Pupil} \n\n -Amplitude : {questionAsset.Amplitude} \n\n -Length : {questionAsset.Longueur}";
+        textZone.text = $"HUMAN INFORMATIONS :\n\n\n\n -Heart rate : {questionAsset.Heart} \n\n -Pupil : {questionAsset.Pupil}";
     }
 
     private void SetValues2(QuestionAsset questionAsset)
