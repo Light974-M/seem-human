@@ -13,11 +13,29 @@ public class EyeSizeSetDetector : MonoBehaviour
     [Tooltip("text that will render diameter")]
     private Text diameter;
 
+    [SerializeField, Tooltip("text that will render actual diameter")]
+    private Text actualDiameter;
+
     private LevelManager levelManager;
+
+    private void OnEnable()
+    {
+        levelManager.newQuestionBegin += SetValue;
+    }
+
+    private void OnDisable()
+    {
+        levelManager.newQuestionBegin -= SetValue;
+    }
 
     private void Awake()
     {
         levelManager = FindObjectOfType<LevelManager>();
+    }
+
+    private void SetValue(QuestionAsset currentQuestion)
+    {
+        actualDiameter.text = currentQuestion.Pupil.ToString() + " Vd";
     }
 
     private void OnMouseOver()

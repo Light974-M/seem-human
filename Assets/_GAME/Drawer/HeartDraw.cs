@@ -20,6 +20,9 @@ public class HeartDraw : MonoBehaviour
     [Tooltip("UI of bpm")]
     private Text _bpmUi;
 
+    [SerializeField, Tooltip("UI of Recquiered BPM")]
+    private Text _requieredBPM;
+
     private bool heartBeat = false;
     private int counter = 0;
 
@@ -34,8 +37,27 @@ public class HeartDraw : MonoBehaviour
 
     private float beatcounter = 0;
 
-    [SerializeField]
-    private LevelManager levelmanager;
+    private LevelManager levelManager;
+
+    private void Awake()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
+
+    private void OnEnable()
+    {
+        levelManager.newQuestionBegin += SetValues;
+    }
+
+    private void OnDisable()
+    {
+        levelManager.newQuestionBegin -= SetValues;
+    }
+
+    private void SetValues(QuestionAsset question)
+    {
+        _requieredBPM.text = question.Heart.ToString();
+    }
 
     private void Update()
     {
@@ -49,7 +71,7 @@ public class HeartDraw : MonoBehaviour
                 currentHeartBeat = Mathf.Round(currentHeartBeat);
                 currentHeartBeat = currentHeartBeat * 10;
                 // On envoie la valeur au levelManager
-                levelmanager.HearthRate = currentHeartBeat;
+                levelManager.HearthRate = currentHeartBeat;
                 beatcounter = 0;
             }
         }
