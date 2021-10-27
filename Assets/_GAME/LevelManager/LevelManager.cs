@@ -9,12 +9,12 @@ public class LevelManager : MonoBehaviour
 {
     [Header("")]
     [Header("STATUS________________________________________________________________________________________________________________")]
-
+    #region StatusVariables
     [SerializeField]
     [Tooltip("Actual hearthrate value")]
     private float _hearthrate;
     public float HearthRate
-    { get { return _hearthrate; }   set { _hearthrate = value; } }
+    { get { return _hearthrate; } set { _hearthrate = value; } }
 
     [SerializeField]
     [Tooltip("Actual pupil dilatation")]
@@ -32,11 +32,12 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("game over font sprite")]
-    private Image gameOverSprite;
+    private Image gameOverSprite; 
+    #endregion
 
     [Header("")]
     [Header("TIME________________________________________________________________________________________________________________")]
-
+    #region TimeVariables
     [SerializeField]
     [Tooltip("timer that will determine question deadline")]
     [Range(0, 30)]
@@ -68,30 +69,36 @@ public class LevelManager : MonoBehaviour
     private GameObject alertPoint;
 
     [SerializeField, Tooltip("Sprite rouge")]
-    private GameObject spriteRouge;
+    private GameObject spriteRouge; 
+    #endregion
 
     [Header("")]
     [Header("LEVEL________________________________________________________________________________________________________________")]
-
-    [SerializeField]
-    [Tooltip("Questions number before game end")]
-    [Range(0, 100)]
+    #region LevelVariables
+    [SerializeField, Tooltip("Questions number before game end"), Range(0, 100)]
     private int _questionNumber = 30;
 
-    [SerializeField]
-    [Tooltip("Niveau de tolerence entre les valeurs actuelles et celles demandees")]
-    private float _tolerance = 1;
+    [SerializeField, Tooltip("Niveau de tolerence entre les valeurs actuelles et celles demandees")]
+    private float _breathTolerance = 1;
+
+    [SerializeField, Tooltip("Niveau de tolérence des BPMs")]
+    private int _hearthTolerance = 10;
+
+    [SerializeField, Tooltip("Niveau de tolérence de la dilatation de la pupille")]
+    private float _pupilTolerance = 1;
 
     [SerializeField, Tooltip("Liste des effets de bugs")]
-    private List<GameObject> glitchList;
+    private List<GameObject> glitchList; 
+    #endregion
 
     [Header("")]
     [Header("QUESTIONS________________________________________________________________________________________________________________")]
 
+    #region QuestionVariables
     [SerializeField]
     [Tooltip("timer lower point")]
     private List<QuestionAsset> _questionList;
-    private QuestionAsset _currentQuestion;    public QuestionAsset CurrentQuestion => _currentQuestion;
+    private QuestionAsset _currentQuestion; public QuestionAsset CurrentQuestion => _currentQuestion;
 
     [SerializeField]
     [Tooltip("Nombre d'erreur max")]
@@ -100,18 +107,20 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private int _error = 0;
 
-
     [SerializeField]
     [Tooltip("Suspicion Slider script")]
-    private SliderController _suspicionSlider;
+    private SliderController _suspicionSlider; 
+    #endregion
 
     private AudioManager audioGet;
 
     //EVENTS_____________________________________________________________________________________________________________________________
+    #region EventVariables
     public delegate void QuestionAssetDelegate(QuestionAsset asset);
     public event QuestionAssetDelegate questionChange;
     public event QuestionAssetDelegate newQuestionBegin;
-    public event QuestionAssetDelegate answer;
+    public event QuestionAssetDelegate answer; 
+    #endregion
 
     private void Awake()
     {
@@ -120,7 +129,6 @@ public class LevelManager : MonoBehaviour
         alertPoint.SetActive(false);
         spriteRouge.SetActive(false);
     }
-
 
     private void Start()
     {
@@ -149,7 +157,7 @@ public class LevelManager : MonoBehaviour
     {
         if(_timer <= 0)
         {
-            SetSuspition(3);
+            SetSuspition(2);
             Respond();
         }
 
@@ -200,19 +208,19 @@ public class LevelManager : MonoBehaviour
     {
         int tmp = 0;
 
-        if (_currentQuestion.Heart != _hearthrate)
+        if (Mathf.Abs(_currentQuestion.Heart - _hearthrate) > _hearthTolerance)
         {
             tmp += 1;
         }
-        if (_currentQuestion.Pupil != _pupilDilatation)
+        if (Mathf.Abs(_currentQuestion.Pupil - _pupilDilatation) > _pupilTolerance)
         {
             tmp +=1;
         }
-        if(Mathf.Abs(breathMesh.localScale.x - breathAskedMesh.localScale.x) > _tolerance)
+        if(Mathf.Abs(breathMesh.localScale.x - breathAskedMesh.localScale.x) > _breathTolerance)
         {
             tmp +=1;
         }
-        else if (Mathf.Abs(breathMesh.localScale.y - breathAskedMesh.localScale.y) > _tolerance)
+        else if (Mathf.Abs(breathMesh.localScale.y - breathAskedMesh.localScale.y) > _breathTolerance)
         {
             tmp +=1;
         }
@@ -282,7 +290,7 @@ public class LevelManager : MonoBehaviour
 
         for(int i=0; i < value; i++)
         {
-            glitchList[Random.Range(0, glitchList.Count)].SetActive(true);
+            glitchList[Random.Range(0, glitchList.Count-1)].SetActive(true);
         }
         Invoke(nameof(DesactiveGlitch), 1.5f);
 

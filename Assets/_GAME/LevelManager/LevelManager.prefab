@@ -45,24 +45,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hearthrate: 0
   _pupilDilatation: 0
-  _amplitude: 0
-  _longueur: 0
-  _questionTimer: 20
+  breathMesh: {fileID: 0}
+  breathAskedMesh: {fileID: 0}
+  gameOverSprite: {fileID: 0}
+  _questionTimer: 30
   _timer: 0
   _questionTimerDecreaseSpeed: 1
   _questionTimerLimit: 1
   _timerSlider: {fileID: 0}
   _timerIsDecrease: 0
-  _questionNumber: 30
-  _tolerance: 10
+  alertPoint: {fileID: 0}
+  spriteRouge: {fileID: 0}
+  _questionNumber: 10
+  _breathTolerance: 1
+  _hearthTolerance: 30
+  _pupilTolerance: 0.3
+  glitchList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _questionList:
   - {fileID: 11400000, guid: 39aa9836e1dc5b44cac980213e196af9, type: 2}
   - {fileID: 11400000, guid: 0c51ab4b7a15b8f4aa0a5739b9750c93, type: 2}
-  - {fileID: 11400000, guid: e5beeedc6711774488e0068726e2b2b2, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: b033d1135b129e14690cf499572eacbe, type: 2}
   - {fileID: 11400000, guid: 3f57857360d05294cb5be9886f6f8adf, type: 2}
   - {fileID: 11400000, guid: 61c6eb2d3bf444e4f963111b44023626, type: 2}
-  - {fileID: 11400000, guid: a07f068ab09bdd94fae48e31d218a36d, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: f731dc07027ec4842acd7f5f091ba8a2, type: 2}
   - {fileID: 11400000, guid: 64a45fa68153f744e84cc18ea185e119, type: 2}
   - {fileID: 11400000, guid: 54367914c2c595f4e9d6bd5808472459, type: 2}

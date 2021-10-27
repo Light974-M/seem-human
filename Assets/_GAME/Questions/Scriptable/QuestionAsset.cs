@@ -23,7 +23,8 @@ public class QuestionAsset : ScriptableObject
 
     private void Awake()
     {
-        if (feeling == "viligant")
+        Debug.Log("Test");
+        if (feeling == "vigilant")
         {
             _heart = 160; _pupil = 0.2f; _amplitude = 80; _longueur = 100;
         }
@@ -56,6 +57,4 @@ public class QuestionAsset : ScriptableObject
             _heart = 60; _pupil = 0.5f; _amplitude = 40; _longueur = 60;
         }
     }
-
-
 }
