@@ -30,6 +30,10 @@ public class LevelManager : MonoBehaviour
     [Tooltip("GameObject du dessin du souffle demande")]
     private Transform breathAskedMesh;
 
+    [SerializeField]
+    [Tooltip("game over font sprite")]
+    private Image gameOverSprite;
+
     [Header("")]
     [Header("TIME________________________________________________________________________________________________________________")]
 
@@ -95,6 +99,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private int _error = 0;
+
 
     [SerializeField]
     [Tooltip("Suspicion Slider script")]
@@ -287,7 +292,14 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Loose");
             audioGet.AudioSource.outputAudioMixerGroup = audioGet.AudioMixerArray[2];
             audioGet.AudioSource.PlayOneShot(audioGet.AudioClipArray[2]);
+            StopAll();
             Invoke(nameof(GameOver), 5f);
+        }
+
+        if(value > 0)
+        {
+            audioGet.AudioSource.outputAudioMixerGroup = audioGet.AudioMixerArray[2];
+            audioGet.AudioSource.PlayOneShot(audioGet.AudioClipArray[3]);
         }
     }
 
@@ -302,5 +314,10 @@ public class LevelManager : MonoBehaviour
         {
             glitchList[i].SetActive(false);
         }
+    }
+
+    private void StopAll()
+    {
+        gameOverSprite.enabled = true;
     }
 }
