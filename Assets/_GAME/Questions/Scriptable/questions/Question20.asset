@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
   m_Name: Question20
   m_EditorClassIdentifier: 
-  _question: did you think johnny was the padre of the game ?
-  _answer: ooooh marie !
+  _question: Did you think johnny hallyday was a great musician ?
+  _answer: why did you say "was" ?  he's dead ?
   _heart: 60
   _pupil: 7.3
   _amplitude: 60
   _longueur: 54
+  feeling: admiration

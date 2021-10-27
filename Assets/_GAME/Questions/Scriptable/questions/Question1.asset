@@ -18,3 +18,4 @@ MonoBehaviour:
   _pupil: 0.5
   _amplitude: 30
   _longueur: 10
+  feeling: disgust
