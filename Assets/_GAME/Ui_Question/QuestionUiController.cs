@@ -69,15 +69,23 @@ public class QuestionUiController : MonoBehaviour
     private void OnEnable()
     {
         levelManager.questionChange += SetText;
+        levelManager.answer += SetAnswer;
     }
 
     private void OnDisable()
     {
         levelManager.questionChange -= SetText;
+        levelManager.answer -= SetAnswer;
     }
 
     private void SetText(QuestionAsset questionAsset)
     {
         textZone.text = $"{questionAsset.Question}";
+    }
+
+    private void SetAnswer(QuestionAsset questionAsset)
+    {
+        Debug.Log("Répondre");
+        textZone.text = $"{questionAsset.Answer}";
     }
 }
