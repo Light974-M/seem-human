@@ -3867,6 +3867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyePupil: {fileID: 920446912}
   diameter: {fileID: 36493138}
+  actualDiameter: {fileID: 0}
 --- !u!1 &1499496710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5577,8 +5578,8 @@ MonoBehaviour:
   lineRender: {fileID: 1847913756}
   heartBeatSetDetector: {fileID: 752318341}
   _bpmUi: {fileID: 357633476}
+  _requieredBPM: {fileID: 0}
   currentHeartBeat: 60
-  levelmanager: {fileID: 1162370602}
 --- !u!1 &1879654124
 GameObject:
   m_ObjectHideFlags: 0

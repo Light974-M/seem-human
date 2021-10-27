@@ -42,6 +42,7 @@ public class HeartDraw : MonoBehaviour
     private void Awake()
     {
         levelManager = FindObjectOfType<LevelManager>();
+        audioGet = FindObjectOfType<AudioManager>();
     }
 
     private void OnEnable()
@@ -56,14 +57,10 @@ public class HeartDraw : MonoBehaviour
 
     private void SetValues(QuestionAsset question)
     {
-        _requieredBPM.text = question.Heart.ToString();
+        _requieredBPM.text = $" Asked : {question.Heart}";
     }
 
-    private AudioManager audio;
-    private void Awake()
-    {
-        audio = FindObjectOfType<AudioManager>();
-    }
+    private AudioManager audioGet;
 
     private void Update()
     {
@@ -71,8 +68,8 @@ public class HeartDraw : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                audio.AudioSource.outputAudioMixerGroup = audio.AudioMixerArray[2];
-                audio.AudioSource.PlayOneShot(audio.AudioClipArray[0]);
+                audioGet.AudioSource.outputAudioMixerGroup = audioGet.AudioMixerArray[2];
+                audioGet.AudioSource.PlayOneShot(audioGet.AudioClipArray[0]);
 
                 heartBeat = true;
                 currentHeartBeat = (currentHeartBeat + (60 / beatcounter)) / 2;

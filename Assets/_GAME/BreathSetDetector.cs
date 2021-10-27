@@ -28,7 +28,7 @@ public class BreathSetDetector : MonoBehaviour
 
     private void UpdateBreathAskedMesh(QuestionAsset asset)
     {
-        breathAskedMesh.localScale = new Vector3((levelManager.CurrentQuestion.Longueur / 19f) + 0.25f, (levelManager.CurrentQuestion.Amplitude / 50f) + 0.25f, breathAskedMesh.localScale.z);
+        breathAskedMesh.localScale = new Vector3((levelManager.CurrentQuestion.Longueur / 100f) + 0.25f, (levelManager.CurrentQuestion.Amplitude / 50f) + 0.25f, breathAskedMesh.localScale.z);
     }
 
     private void OnMouseDrag()
