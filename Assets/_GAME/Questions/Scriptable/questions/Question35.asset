@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Question35
   m_EditorClassIdentifier: 
   _question: can i see your buisness card ?
-  _answer: i can't believe it....you have a better one...
+  _answer: paul allen one ?
   _heart: 150
   _pupil: 8.9
   _amplitude: 25
   _longueur: 98
+  feeling: vigilant

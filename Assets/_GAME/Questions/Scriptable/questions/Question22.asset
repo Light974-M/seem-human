@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Question22
   m_EditorClassIdentifier: 
   _question: are you an impostor ?
-  _answer: i am not sus
+  _answer: i'm a crewmate, but one of us is SUS
   _heart: 130
   _pupil: 6
   _amplitude: 76
   _longueur: 4
+  feeling: vigilant

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
   m_Name: Question29
   m_EditorClassIdentifier: 
-  _question: have you ever masturbated to tentacles ?
-  _answer: no, and i wish not.
+  _question: do you like tentacles ?
+  _answer: no, and i wish not to meet them
   _heart: 100
   _pupil: 7.5
   _amplitude: 21
   _longueur: 16
+  feeling: terror
