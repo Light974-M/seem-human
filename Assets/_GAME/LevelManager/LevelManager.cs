@@ -91,6 +91,8 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Suspicion Slider script")]
     private SliderController _suspicionSlider;
 
+    private AudioManager audio;
+
     //EVENTS_____________________________________________________________________________________________________________________________
     public delegate void QuestionAssetDelegate(QuestionAsset asset);
     public event QuestionAssetDelegate questionChange;
@@ -99,6 +101,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        audio = FindObjectOfType<AudioManager>();
+
         _hearthrate = 60;
         _pupilDilatation = 1;
 
@@ -144,6 +148,10 @@ public class LevelManager : MonoBehaviour
 
             // On reset le timer
             UpdateTimer();
+
+            //play sound
+            audio.AudioSource.outputAudioMixerGroup = audio.AudioMixerArray[2];
+            audio.AudioSource.PlayOneShot(audio.AudioClipArray[1]);
 
             // Lance la verification des param�tres
             TestSuspicion();
@@ -241,8 +249,17 @@ public class LevelManager : MonoBehaviour
         _suspicionSlider.SetValue(_error);
         if (_error >= _errorMax)
         {
-            SceneManager.LoadScene("LoseScreen");
+            _error = 0;
             Debug.Log("Loose");
+            audio.AudioSource.outputAudioMixerGroup = audio.AudioMixerArray[2];
+            audio.AudioSource.PlayOneShot(audio.AudioClipArray[2]);
+            Invoke(nameof(GameOver), 5f);
         }
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene("LoseScreen");
+        
     }
 }

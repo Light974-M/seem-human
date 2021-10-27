@@ -59,12 +59,21 @@ public class HeartDraw : MonoBehaviour
         _requieredBPM.text = question.Heart.ToString();
     }
 
+    private AudioManager audio;
+    private void Awake()
+    {
+        audio = FindObjectOfType<AudioManager>();
+    }
+
     private void Update()
     {
         if (heartBeatSetDetector.IsChangingHeartBeat)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                audio.AudioSource.outputAudioMixerGroup = audio.AudioMixerArray[2];
+                audio.AudioSource.PlayOneShot(audio.AudioClipArray[0]);
+
                 heartBeat = true;
                 currentHeartBeat = (currentHeartBeat + (60 / beatcounter)) / 2;
                 currentHeartBeat = currentHeartBeat / 10;
