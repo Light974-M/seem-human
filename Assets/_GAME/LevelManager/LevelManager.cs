@@ -60,6 +60,12 @@ public class LevelManager : MonoBehaviour
     [Tooltip("if timer decrease")]
     private bool _timerIsDecrease = false;
 
+    [SerializeField, Tooltip("GameObject AlertPoint")]
+    private GameObject alertPoint;
+
+    [SerializeField, Tooltip("Sprite rouge")]
+    private GameObject spriteRouge;
+
     [Header("")]
     [Header("LEVEL________________________________________________________________________________________________________________")]
 
@@ -71,6 +77,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Niveau de tolerence entre les valeurs actuelles et celles demandees")]
     private float _tolerance = 1;
+
+    [SerializeField, Tooltip("Liste des effets de bugs")]
+    private List<GameObject> glitchList;
 
     [Header("")]
     [Header("QUESTIONS________________________________________________________________________________________________________________")]
@@ -99,10 +108,17 @@ public class LevelManager : MonoBehaviour
     public event QuestionAssetDelegate newQuestionBegin;
     public event QuestionAssetDelegate answer;
 
-    private void Start()
+    private void Awake()
     {
         audioGet = FindObjectOfType<AudioManager>();
+        DesactiveGlitch();
+        alertPoint.SetActive(false);
+        spriteRouge.SetActive(false);
+    }
 
+
+    private void Start()
+    {
         _hearthrate = 60;
         _pupilDilatation = 1;
 
@@ -136,6 +152,12 @@ public class LevelManager : MonoBehaviour
         {
             _timer -= Time.deltaTime;
             _timerSlider.SetValue(_timer);
+
+            if(_timer < _questionTimer/2)
+            {
+                alertPoint.SetActive(true);
+                spriteRouge.SetActive(true);
+            }
         }
     }
 
@@ -143,6 +165,9 @@ public class LevelManager : MonoBehaviour
     {
         if(_timerIsDecrease)
         {
+            alertPoint.SetActive(false);
+            spriteRouge.SetActive(false);
+
             // On stoppe le timer
             _timerIsDecrease = false;
 
@@ -224,7 +249,6 @@ public class LevelManager : MonoBehaviour
         {
             newQuestionBegin(_currentQuestion);
         }
-
     }
 
     private void UpdateTimer()
@@ -247,6 +271,13 @@ public class LevelManager : MonoBehaviour
     {
         _error += value;
         _suspicionSlider.SetValue(_error);
+
+        for(int i=0; i < _error; i++)
+        {
+            glitchList[Random.Range(0, glitchList.Count)].SetActive(true);
+        }
+        Invoke(nameof(DesactiveGlitch), 1.5f);
+
         if (_error >= _errorMax)
         {
             _error = 0;
@@ -260,6 +291,13 @@ public class LevelManager : MonoBehaviour
     private void GameOver()
     {
         SceneManager.LoadScene("LoseScreen");
-        
+    }
+
+    private void DesactiveGlitch()
+    {
+        for(int i=0; i < glitchList.Count; i++)
+        {
+            glitchList[i].SetActive(false);
+        }
     }
 }
