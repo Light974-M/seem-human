@@ -193,22 +193,25 @@ public class LevelManager : MonoBehaviour
 
     private void TestSuspicion()
     {
+        int tmp = 0;
+
         if (_currentQuestion.Heart != _hearthrate)
         {
-            SetSuspition(1);
+            tmp += 1;
         }
         if (_currentQuestion.Pupil != _pupilDilatation)
         {
-            SetSuspition(1);
+            tmp +=1;
         }
         if(Mathf.Abs(breathMesh.localScale.x - breathAskedMesh.localScale.x) > _tolerance)
         {
-            SetSuspition(1);
+            tmp +=1;
         }
         else if (Mathf.Abs(breathMesh.localScale.y - breathAskedMesh.localScale.y) > _tolerance)
         {
-            SetSuspition(1);
+            tmp +=1;
         }
+        SetSuspition(tmp);
     }
 
     private void ChargementNewQuestion()
@@ -272,7 +275,7 @@ public class LevelManager : MonoBehaviour
         _error += value;
         _suspicionSlider.SetValue(_error);
 
-        for(int i=0; i < _error; i++)
+        for(int i=0; i < value; i++)
         {
             glitchList[Random.Range(0, glitchList.Count)].SetActive(true);
         }
