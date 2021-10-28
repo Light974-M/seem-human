@@ -125,6 +125,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField, Tooltip("heartBeatAnimation")]
     private Animator heartAnim;
 
+    [SerializeField]
+    private List<GameObject> ExlamationPoint;
+
     //EVENTS_____________________________________________________________________________________________________________________________
     #region EventVariables
     public delegate void QuestionAssetDelegate(QuestionAsset asset);
@@ -230,18 +233,22 @@ public class LevelManager : MonoBehaviour
         if (Mathf.Abs(_currentQuestion.Heart - _hearthrate) > _hearthTolerance)
         {
             tmp += 1;
+            ExlamationPoint[0].SetActive(true);
         }
         if (Mathf.Abs(_currentQuestion.Pupil - _pupilDilatation) > _pupilTolerance)
         {
             tmp +=1;
+            ExlamationPoint[1].SetActive(true);
         }
         if(Mathf.Abs(breathMesh.localScale.x - breathAskedMesh.localScale.x) > _breathTolerance)
         {
             tmp +=1;
+            ExlamationPoint[2].SetActive(true);
         }
         else if (Mathf.Abs(breathMesh.localScale.y - breathAskedMesh.localScale.y) > _breathTolerance)
         {
             tmp +=1;
+            ExlamationPoint[2].SetActive(true);
         }
         SetSuspition(tmp);
     }
@@ -257,7 +264,10 @@ public class LevelManager : MonoBehaviour
         // Sinon on charge une nouvelle question
         UpdateQuestion();
         // On affiche la question
-        questionChange(_currentQuestion);
+        if(questionChange != null)
+        {
+            questionChange(_currentQuestion);
+        }
 
         // Puis on affiche apres 3s les donnees et on lance le timer
         Invoke(nameof(LunchNewQuestion), 3f);
@@ -265,7 +275,21 @@ public class LevelManager : MonoBehaviour
 
     private void UpdateQuestion()
     {
-        int _tmp = Random.Range(0, _questionList.Count);
+        int _tmp = 0;
+        bool isOk = false;
+
+        if(_currentQuestion != null)
+        {
+            while (!isOk)
+            {
+                _tmp = Random.Range(0, _questionList.Count);
+                if (_questionList[_tmp].Feeling != _currentQuestion.Feeling)
+                {
+                    isOk = true;
+                }
+            }
+        }
+        
         _currentQuestion = _questionList[_tmp];
 
         if (_questionList.Count > 1)
@@ -340,6 +364,10 @@ public class LevelManager : MonoBehaviour
         for(int i=0; i < glitchList.Count; i++)
         {
             glitchList[i].SetActive(false);
+        }
+        for(int i=0; i < ExlamationPoint.Count; i++)
+        {
+            ExlamationPoint[i].SetActive(false);
         }
     }
 
