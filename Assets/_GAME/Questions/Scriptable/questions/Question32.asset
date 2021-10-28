@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Question32
   m_EditorClassIdentifier: 
   _question: Do you like vtuber ?
-  _answer: No, i prefer real ones...
+  _answer: No, I prefer real ones...
   feeling: 6

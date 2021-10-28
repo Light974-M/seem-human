@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Question28
   m_EditorClassIdentifier: 
   _question: What do you think about poor people ?
-  _answer: No, i pity them
+  _answer: I pity them
   feeling: 4
