@@ -112,6 +112,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Suspicion Slider script")]
     private SliderController _suspicionSlider;
+    #endregion
 
     private AudioManager audioGet;
     private AutoRotate[] disk;
@@ -131,8 +132,6 @@ public class LevelManager : MonoBehaviour
     public event QuestionAssetDelegate newQuestionBegin;
     public event QuestionAssetDelegate answer; 
     #endregion
-
-    private AudioManager audioGet;
 
     [SerializeField, Tooltip("Objet contenant toute la doc du jeu")]
     private GameObject doc;

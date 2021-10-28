@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
   m_Name: Question17
   m_EditorClassIdentifier: 
-  _question: in a war, if your life is in danger, would you make a joke out of nowhere
+  _question: In a war, if your life is in danger, would you make a joke out of nowhere
     ?
-  _answer: it is important to have sense of humor in a fighting hole
+  _answer: It is important to have sense of humor in a fighting hole
   feeling: 7

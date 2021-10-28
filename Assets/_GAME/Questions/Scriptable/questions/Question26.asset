@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
   m_Name: Question26
   m_EditorClassIdentifier: 
-  _question: do you like blood ?
-  _answer: blood is important for life, so i care about
-  _heart: 120
-  _pupil: 2.4
-  _amplitude: 35
-  _longueur: 48
+  _question: Do you like blood ?
+  _answer: Blood is important for life, so i care about
+  feeling: 0
