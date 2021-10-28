@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
   m_Name: Question4
   m_EditorClassIdentifier: 
-  _question: how many optic nerve do human have ?
-  _answer: i don't now
-  _heart: 50
-  _pupil: 8.4
-  _amplitude: 94
-  _longueur: 32
+  _question: How many optic nerve do human have ?
+  _answer: I don't now
+  feeling: 0

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Question20
   m_EditorClassIdentifier: 
   _question: Did you think johnny hallyday was a great musician ?
-  _answer: why did you say "was" ?  he's dead ?
+  _answer: Why did you say "was" ?  he's dead ?
   feeling: 7
