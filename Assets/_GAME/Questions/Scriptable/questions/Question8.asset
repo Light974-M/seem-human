@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Question8
   m_EditorClassIdentifier: 
   _question: Have you ever commit violences against other androids ?
-  _answer: No i have not
+  _answer: No I have not
   feeling: 1
