@@ -112,8 +112,6 @@ public class LevelManager : MonoBehaviour
     private SliderController _suspicionSlider; 
     #endregion
 
-    private AudioManager audioGet;
-
     //EVENTS_____________________________________________________________________________________________________________________________
     #region EventVariables
     public delegate void QuestionAssetDelegate(QuestionAsset asset);
@@ -122,12 +120,18 @@ public class LevelManager : MonoBehaviour
     public event QuestionAssetDelegate answer; 
     #endregion
 
+    private AudioManager audioGet;
+
+    [SerializeField, Tooltip("Objet contenant toute la doc du jeu")]
+    private GameObject doc;
+
     private void Awake()
     {
         audioGet = FindObjectOfType<AudioManager>();
         DesactiveGlitch();
         alertPoint.SetActive(false);
         spriteRouge.SetActive(false);
+        doc.SetActive(false);
     }
 
     private void Start()
@@ -327,5 +331,10 @@ public class LevelManager : MonoBehaviour
     private void StopAll()
     {
         gameOverSprite.enabled = true;
+    }
+
+    public void OpenDoc(bool isActive)
+    {
+        doc.SetActive(isActive);
     }
 }

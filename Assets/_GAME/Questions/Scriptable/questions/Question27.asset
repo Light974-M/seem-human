@@ -14,8 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: do you like huey lewis & the news ?
   _answer: the song is a bit too new wave for my taste
-  _heart: 60
-  _pupil: 2.8
-  _amplitude: 70
-  _longueur: 30
-  feeling: disgust
+  feeling: 1

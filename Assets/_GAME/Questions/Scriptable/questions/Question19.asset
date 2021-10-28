@@ -14,8 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: you finally awake ?
   _answer: i was not sleeping
-  _heart: 70
-  _pupil: 3.8
-  _amplitude: 54
-  _longueur: 22
-  feeling: surprise
+  feeling: 5

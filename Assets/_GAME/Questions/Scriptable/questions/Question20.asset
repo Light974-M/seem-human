@@ -14,8 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: Did you think johnny hallyday was a great musician ?
   _answer: why did you say "was" ?  he's dead ?
-  _heart: 60
-  _pupil: 7.3
-  _amplitude: 60
-  _longueur: 54
-  feeling: admiration
+  feeling: 7

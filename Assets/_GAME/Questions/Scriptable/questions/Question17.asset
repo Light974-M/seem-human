@@ -15,8 +15,4 @@ MonoBehaviour:
   _question: in a war, if your life is in danger, would you make a joke out of nowhere
     ?
   _answer: it is important to have sense of humor in a fighting hole
-  _heart: 60
-  _pupil: 3.5
-  _amplitude: 42
-  _longueur: 25
-  feeling: admiration
+  feeling: 7

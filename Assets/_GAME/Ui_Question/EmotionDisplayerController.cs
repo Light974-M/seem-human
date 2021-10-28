@@ -28,6 +28,6 @@ public class EmotionDisplayerController : MonoBehaviour
 
     private void SetValues(QuestionAsset asset)
     {
-        textZone.text = $"{asset.Answer}";
+        textZone.text = $"{asset.Feeling}";
     }
 }
