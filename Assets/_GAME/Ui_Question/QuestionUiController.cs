@@ -11,8 +11,14 @@ public class QuestionUiController : MonoBehaviour
     [SerializeField]
     [Tooltip("place where question will be displayed")]
     private Text textZone;
+    public Text TextZone
+    {
+        get { return textZone; }
+        set { textZone = value; }
+    }
 
     private LevelManager levelManager;
+    private WriteBlueScreen textDefil;
 
     [Header("")]
     [Header("BLADE RUNNER IMG____________________________________________________________________________________________________________")]
@@ -34,6 +40,7 @@ public class QuestionUiController : MonoBehaviour
 
     private void Awake()
     {
+        textDefil = FindObjectOfType<WriteBlueScreen>();
         levelManager = FindObjectOfType<LevelManager>();
         cameraImage.sprite = spriteList[0];
     }
@@ -68,24 +75,13 @@ public class QuestionUiController : MonoBehaviour
 
     private void OnEnable()
     {
-        levelManager.questionChange += SetText;
-        levelManager.answer += SetAnswer;
+        levelManager.questionChange += textDefil.SetText;
+        levelManager.answer += textDefil.SetAnswer;
     }
 
     private void OnDisable()
     {
-        levelManager.questionChange -= SetText;
-        levelManager.answer -= SetAnswer;
-    }
-
-    private void SetText(QuestionAsset questionAsset)
-    {
-        textZone.text = $"{questionAsset.Question}";
-    }
-
-    private void SetAnswer(QuestionAsset questionAsset)
-    {
-        Debug.Log("Répondre");
-        textZone.text = $"{questionAsset.Answer}";
+        levelManager.questionChange -= textDefil.SetText;
+        levelManager.answer -= textDefil.SetAnswer;
     }
 }
