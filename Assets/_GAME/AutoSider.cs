@@ -17,7 +17,7 @@ public class AutoSider : MonoBehaviour
         slider = GetComponent<Slider>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(sens)
         {
