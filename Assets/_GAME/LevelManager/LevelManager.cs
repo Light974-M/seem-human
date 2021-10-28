@@ -85,6 +85,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField, Tooltip("Liste des effets de bugs")]
     private List<GameObject> glitchList;
 
+    private AutoSider effectSlider;
+
     [Header("")]
     [Header("QUESTIONS________________________________________________________________________________________________________________")]
 
@@ -106,6 +108,15 @@ public class LevelManager : MonoBehaviour
     private SliderController _suspicionSlider;
 
     private AudioManager audioGet;
+    private AutoRotate[] disk;
+    private HeartDraw heartDraw;
+    private QuestionUiController questionUiController;
+
+    [Header("OTHER__________________________________________________________________________________")]
+    [Header("")]
+
+    [SerializeField, Tooltip("heartBeatAnimation")]
+    private Animator heartAnim;
 
     //EVENTS_____________________________________________________________________________________________________________________________
     public delegate void QuestionAssetDelegate(QuestionAsset asset);
@@ -115,6 +126,10 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        heartDraw = FindObjectOfType<HeartDraw>();
+        questionUiController = FindObjectOfType<QuestionUiController>();
+        disk = FindObjectsOfType<AutoRotate>();
+        effectSlider = FindObjectOfType<AutoSider>();
         audioGet = FindObjectOfType<AudioManager>();
         DesactiveGlitch();
         alertPoint.SetActive(false);
@@ -318,6 +333,14 @@ public class LevelManager : MonoBehaviour
 
     private void StopAll()
     {
+        foreach (AutoRotate disk in disk)
+        {
+            disk.enabled = false; 
+        }
         gameOverSprite.enabled = true;
+        effectSlider.enabled = false;
+        heartDraw.enabled = false;
+        questionUiController.enabled = false;
+        heartAnim.enabled = false;
     }
 }
