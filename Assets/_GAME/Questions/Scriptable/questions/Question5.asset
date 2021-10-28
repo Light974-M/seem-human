@@ -14,8 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: if you lose an arm right now, how would you feel like ?
   _answer: it would hurt !
-  _heart: 120
-  _pupil: 9.4
-  _amplitude: 39
-  _longueur: 75
-  feeling: terror
+  feeling: 3

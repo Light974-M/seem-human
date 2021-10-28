@@ -14,8 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: do you like tentacles ?
   _answer: no, and i wish not to meet them
-  _heart: 100
-  _pupil: 7.5
-  _amplitude: 21
-  _longueur: 16
-  feeling: terror
+  feeling: 3

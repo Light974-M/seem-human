@@ -14,8 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _question: are you a chad ?
   _answer: a giga one, an average berserk enjoyer i could say
-  _heart: 70
-  _pupil: 3.9
-  _amplitude: 50
-  _longueur: 78
-  feeling: sadness
+  feeling: 4
