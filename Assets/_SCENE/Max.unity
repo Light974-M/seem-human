@@ -8881,6 +8881,10 @@ PrefabInstance:
       value: LevelManager
       objectReference: {fileID: 0}
     - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
+      propertyPath: heartAnim
+      value: 
+      objectReference: {fileID: 1242204442}
+    - target: {fileID: 6393664257682937434, guid: 65d937e96b749c14296e804a52c17958, type: 3}
       propertyPath: heartDraw
       value: 
       objectReference: {fileID: 1847913758}
