@@ -17,7 +17,7 @@ public class QuestionAsset : ScriptableObject
     [SerializeField, Tooltip("feelingneeded")]
     private Emotion feeling = Emotion.Vigilant;     public string Feeling => feeling.ToString();
 
-    private enum Emotion
+    public enum Emotion
     {
         Vigilant,
         Disgust,
@@ -26,7 +26,8 @@ public class QuestionAsset : ScriptableObject
         Sadness,
         Surprise,
         Ecstacy,
-        Admiration
+        Admiration,
+        None
     }
 
     private void Awake()

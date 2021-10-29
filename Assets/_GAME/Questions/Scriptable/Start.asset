@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e93398c8a81b34da9ce2e4f74e06f7, type: 3}
   m_Name: Start
   m_EditorClassIdentifier: 
-  _question: let's start
-  _answer: ...
-  _heart: 0
-  _pupil: 0
-  _inspiration: 0
-  _expiration: 0
+  _question: Let's start, just respond to the questions
+  _answer: Okay
+  feeling: 8
