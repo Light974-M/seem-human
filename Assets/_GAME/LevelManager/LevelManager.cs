@@ -103,6 +103,9 @@ public class LevelManager : MonoBehaviour
     private QuestionAsset _currentQuestion; public QuestionAsset CurrentQuestion => _currentQuestion;
 
     [SerializeField]
+    private QuestionAsset _firstQuestion;
+
+    [SerializeField]
     [Tooltip("Nombre d'erreur max")]
     private int _errorMax = 10;
 
@@ -162,7 +165,7 @@ public class LevelManager : MonoBehaviour
         _suspicionSlider.SetValue(_error);
 
         // On charge la nouvelle question
-        UpdateQuestion();
+        _currentQuestion = _firstQuestion;
 
         // On initialise le timer
         UpdateTimer();
@@ -228,29 +231,31 @@ public class LevelManager : MonoBehaviour
 
     private void TestSuspicion()
     {
-        int tmp = 0;
-
-        if (Mathf.Abs(_currentQuestion.Heart - _hearthrate) > _hearthTolerance)
+        if(_currentQuestion.Feeling != QuestionAsset.Emotion.None.ToString())
         {
-            tmp += 1;
-            ExlamationPoint[0].SetActive(true);
+            int tmp = 0;
+            if (Mathf.Abs(_currentQuestion.Heart - _hearthrate) > _hearthTolerance)
+            {
+                tmp += 1;
+                ExlamationPoint[0].SetActive(true);
+            }
+            if (Mathf.Abs(_currentQuestion.Pupil - _pupilDilatation) > _pupilTolerance)
+            {
+                tmp += 1;
+                ExlamationPoint[1].SetActive(true);
+            }
+            if (Mathf.Abs(breathMesh.localScale.x - breathAskedMesh.localScale.x) > _breathTolerance)
+            {
+                tmp += 1;
+                ExlamationPoint[2].SetActive(true);
+            }
+            else if (Mathf.Abs(breathMesh.localScale.y - breathAskedMesh.localScale.y) > _breathTolerance)
+            {
+                tmp += 1;
+                ExlamationPoint[2].SetActive(true);
+            }
+            SetSuspition(tmp);
         }
-        if (Mathf.Abs(_currentQuestion.Pupil - _pupilDilatation) > _pupilTolerance)
-        {
-            tmp +=1;
-            ExlamationPoint[1].SetActive(true);
-        }
-        if(Mathf.Abs(breathMesh.localScale.x - breathAskedMesh.localScale.x) > _breathTolerance)
-        {
-            tmp +=1;
-            ExlamationPoint[2].SetActive(true);
-        }
-        else if (Mathf.Abs(breathMesh.localScale.y - breathAskedMesh.localScale.y) > _breathTolerance)
-        {
-            tmp +=1;
-            ExlamationPoint[2].SetActive(true);
-        }
-        SetSuspition(tmp);
     }
 
     private void ChargementNewQuestion()

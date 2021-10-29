@@ -52,7 +52,7 @@ public class EyeSizeSetDetector : MonoBehaviour
         }
 
         float Vd = Mathf.Round(eyePupil.localScale.x * 100) / 100;
-        diameter.text = $"{Vd} Vd";
+        diameter.text = $"{Vd.ToString("F1")}";
         levelManager.PupilDilatation = Vd;
     }
 }

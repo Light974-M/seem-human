@@ -85,7 +85,7 @@ public class HeartDraw : MonoBehaviour
 
     void FixedUpdate()
     {
-        _bpmUi.text = $"{currentHeartBeat} BPM";
+        _bpmUi.text = $"{currentHeartBeat}";
 
         transform.position += Vector3.right * (30 * Time.deltaTime);
         lineRender.positionCount++;
